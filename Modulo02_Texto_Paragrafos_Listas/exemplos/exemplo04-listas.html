@@ -1,0 +1,60 @@
+<!-- EXEMPLO 04 – Listas -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"> <!-- Suporte a acentos -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsivo -->
+    <title>Exemplo 04 – Listas</title>
+    <link rel="stylesheet" href="../modulo02.css"> <!-- CSS básico do módulo -->
+</head>
+<body>
+    <h1>Exemplo de Listas</h1>
+
+    <!-- 1. Lista não ordenada (bolinhas) -->
+    <h2>1. Lista não ordenada</h2>
+    <ul>
+        <li>Maçã</li> <!-- Item da lista -->
+        <li>Banana</li>
+        <li>Laranja</li>
+        <li>
+            Frutas cítricas
+            <!-- Lista aninhada -->
+            <ul>
+                <li>Limão</li>
+                <li>Laranja</li>
+            </ul>
+        </li>
+    </ul>
+
+    <!-- 2. Lista ordenada (numerada) -->
+    <h2>2. Lista ordenada</h2>
+    <ol type="1" start="1">
+        <li>Aprender HTML</li>
+        <li>Praticar com exemplos</li>
+        <li>Fazer exercícios</li>
+    </ol>
+
+    <!-- Lista ordenada com letras maiúsculas e invertida -->
+    <ol type="A" start="3" reversed>
+        <li>Item C</li>
+        <li>Item B</li>
+        <li>Item A</li>
+    </ol>
+
+    <!-- 3. Lista de definições -->
+    <h2>3. Lista de definições</h2>
+    <dl>
+        <dt>HTML</dt> <!-- Termo -->
+        <dd>Linguagem de marcação usada para criar páginas web.</dd> <!-- Definição -->
+
+        <dt>CSS</dt>
+        <dd>Linguagem de estilo que define aparência de páginas HTML.</dd>
+
+        <dt>JavaScript</dt>
+        <dd>Linguagem de programação usada para tornar páginas interativas.</dd>
+    </dl>
+
+    <!-- Link de navegação -->
+    <a href="../../menu.html">Voltar ao Menu</a>
+</body>
+</html>

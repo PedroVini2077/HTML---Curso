@@ -1,0 +1,78 @@
+<!-- EXEMPLO 03 – Citações e Código -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 03 – Citações e Código</title>
+    <link rel="stylesheet" href="../modulo02.css">
+</head>
+<body>
+    <h1>Exemplo de Citações e Código</h1>
+
+    <!-- Citação em bloco -->
+    <h2>1. Citação em bloco</h2>
+     <!-- O atributo "cite" aqui não é visível, mas dá contexto semântico para máquinas -->
+    <blockquote cite="https://pt.wikipedia.org/wiki/HTML">
+        O HTML é a linguagem de marcação padrão para documentos projetados
+        para serem exibidos em um navegador da web.
+    </blockquote>
+
+    <!-- 
+        IMPORTANTE:
+        - O atributo "cite" não cria link visível.
+        - Se quisermos mostrar a fonte para o usuário, precisamos usar <a>.
+        - Exemplo de como ficaria (mas está comentado abaixo):
+    -->
+
+    <!-- 
+    <p>
+        Fonte: <a href="https://pt.wikipedia.org/wiki/HTML" target="_blank">Wikipedia</a>
+    </p>
+    -->
+
+    <!-- Resultado:
+         - O usuário vê apenas a citação estilizada pelo <blockquote>.
+         - As máquinas (Google, leitores de tela, validadores) sabem a fonte por "cite".
+         - O link visível só aparece se tirarmos o comentário acima. 
+    -->
+
+    <!-- Citação curta -->
+    <h2>2. Citação curta</h2>
+    <p>Como disse Steve Jobs: <q>A inovação distingue um líder de um seguidor.</q></p>
+
+    <!-- Abreviação -->
+    <h2>3. Abreviações</h2>
+    <p>
+        Hoje estou estudando <abbr title="HyperText Markup Language">HTML</abbr>,
+        depois vou revisar <abbr title="Cascading Style Sheets">CSS</abbr> e
+        <abbr title="JavaScript">JS</abbr>.
+    </p>
+
+    <!-- Referência de obra -->
+    <h2>4. Referência de obra</h2>
+    <p>
+        Um dos meus filmes favoritos é <cite>A Origem</cite>, dirigido por Christopher Nolan.
+    </p>
+
+    <!-- Código em linha -->
+    <h2>5. Código em linha</h2>
+    <p>
+        Para exibir algo no console do navegador, usamos:
+        <code>console.log("Olá Mundo")</code>.
+    </p>
+
+    <!-- Código em bloco -->
+    <h2>6. Bloco de código com &lt;pre&gt;</h2>
+    <pre>
+function somar(a, b) {
+    return a + b;
+}
+
+console.log(somar(5, 3)); // Saída: 8
+    </pre>
+
+    <!-- Link de navegação -->
+    <a href="../../menu.html">Voltar ao Menu</a>
+</body>
+</html>
