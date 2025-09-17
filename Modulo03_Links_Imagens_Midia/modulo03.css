@@ -5,7 +5,6 @@ body {
     color: white;
 }
 
-h3 {
-    display: block;
-    margin-top: 2000px;
+html {
+    scroll-behavior: smooth;
 }
