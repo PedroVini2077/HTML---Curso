@@ -4,3 +4,7 @@ body {
     background-color: rgb(2, 2, 2);
     color: white;
 }
+
+a {
+    color: cyan;
+}

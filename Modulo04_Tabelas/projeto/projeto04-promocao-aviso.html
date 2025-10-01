@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Pedro Vinícios">
+    <meta name="description" content="Estudante de TI - Desenvolvimento Web">
+    <link rel="stylesheet" href="../modulo04.css">
+    <title>Projeto 04 Exemplo - Promoções e Avisos</title>
+    <style>
+        /* Exemplo de estilos extras só pra esse arquivo */
+        .promocao {
+            background-color: rgb(3, 255, 3);
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .em-falta {
+            background-color: #ff0015;
+            color: #721c24;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tabela de Produtos com Promoções e Avisos</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Produtos</th>
+                <th>Categoria</th>
+                <th>Quantidade</th>
+                <th>Preço Unitário</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Pc Gamer</td>
+                <td rowspan="2">Eletrônico</td>
+                <td>1</td>
+                <td>R$ 5.000,00</td>
+                <td>R$ 5.000,00</td>
+            </tr>
+            <tr class="em-falta">
+                <td>Placa de Vídeo</td>
+                <td>0</td>
+                <td>R$ 1.000,00</td>
+                <td>Indisponível</td>
+            </tr>
+
+            <!-- Linha de promoção ocupando todas as colunas -->
+            <tr>
+                <td colspan="5" class="promocao">🔥 Promoção da Semana: 10% OFF em todos os jogos!</td>
+            </tr>
+
+            <tr>
+                <td>Dark Souls III</td>
+                <td rowspan="3">Jogos</td>
+                <td>1</td>
+                <td>R$ 250,00</td>
+                <td>R$ 250,00</td>
+            </tr>
+            <tr>
+                <td>Forza Horizon 4</td>
+                <td>1</td>
+                <td>R$ 500,00</td>
+                <td>R$ 500,00</td>
+            </tr>
+            <tr>
+                <td>Red Dead Redemption 2</td>
+                <td>1</td>
+                <td>R$ 180,99</td>
+                <td>R$ 180,99</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" style="text-align: right;">TOTAL:</td>
+                <td>R$ 5.930,99</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <a href="../../menu.html">Voltar ao Menu</a>
+    <a href="projeto04.html">Tabela dos Produtos</a>
+</body>
+
+</html>

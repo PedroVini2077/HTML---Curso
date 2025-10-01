@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../modulo04.css">
+  <title>Exemplo 04 - Colspan e Rowspan</title>
+</head>
+<body>
+  <h1>Exemplo 04 - Mesclagem de Células</h1>
+
+  <table border="1">
+    <tr>
+      <th>Nome</th>
+      <!-- Cabeçalho ocupa 2 colunas -->
+      <th colspan="2">Contato</th>
+    </tr>
+    <tr>
+      <td>Pedro</td>
+      <td>Email</td>
+      <td>Telefone</td>
+    </tr>
+    <tr>
+      <!-- Essa célula ocupa 2 linhas -->
+      <td rowspan="2">Maria</td>
+      <td>Email</td>
+      <td>Telefone</td>
+    </tr>
+    <tr>
+      <!-- A célula "Maria" continua aqui (rowspan=2) -->
+      <td>Outro Email</td>
+      <td>Outro Telefone</td>
+    </tr>
+  </table>
+
+  <a href="../../menu.html">Voltar ao Menu</a>
+</body>
+</html>
