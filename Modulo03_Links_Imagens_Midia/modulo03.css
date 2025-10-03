@@ -3,6 +3,9 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(2, 2, 2);
     color: white;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
 }
 
 html {
@@ -11,4 +14,154 @@ html {
 
 a {
     color: cyan;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #00ffff;
+    text-decoration: underline;
+}
+
+/* Ajusta títulos para não quebrarem feio */
+h1, h2, h3 {
+    word-wrap: break-word;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+/* Seções com espaçamento adequado */
+section {
+    margin-bottom: 2em;
+}
+
+/* Imagens responsivas */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+}
+
+/* Figuras com legendas */
+figure {
+    margin: 20px 0;
+    text-align: center;
+}
+
+figcaption {
+    margin-top: 10px;
+    font-style: italic;
+    color: #aaa;
+    font-size: 0.9em;
+}
+
+/* Vídeos responsivos */
+video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px 0;
+}
+
+/* Players de áudio responsivos */
+audio {
+    width: 100%;
+    max-width: 500px;
+    margin: 15px 0;
+}
+
+/* Parágrafos com melhor legibilidade */
+p {
+    margin: 1em 0;
+}
+
+/* Code tags */
+code {
+    background-color: #333;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+/* RESPONSIVIDADE PARA CELULAR */
+@media (max-width: 768px) {
+    body {
+        font-size: 18px;
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    h2 {
+        font-size: 1.4em;
+    }
+    
+    h3 {
+        font-size: 1.1em;
+    }
+    
+    /* Vídeos ocupam toda largura no celular */
+    video {
+        width: 100%;
+    }
+    
+    /* Audio players mais compactos */
+    audio {
+        width: 100%;
+    }
+    
+    /* Links maiores para facilitar o toque */
+    a {
+        display: inline-block;
+        padding: 5px;
+        margin: 5px 0;
+    }
+    
+    /* Espaçamento entre parágrafos */
+    p {
+        margin: 1.2em 0;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 16px;
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 1.5em;
+    }
+    
+    h2 {
+        font-size: 1.3em;
+    }
+    
+    h3 {
+        font-size: 1em;
+    }
+    
+    /* Figuras mais compactas em telas muito pequenas */
+    figure {
+        margin: 15px 0;
+    }
+    
+    figcaption {
+        font-size: 0.85em;
+    }
 }
