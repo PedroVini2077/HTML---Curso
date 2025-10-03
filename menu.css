@@ -81,3 +81,115 @@ ul {
 li {
     margin: 5px 0;
 }
+
+/* ============================================ */
+/* RESPONSIVIDADE PARA DISPOSITIVOS MÓVEIS */
+/* ============================================ */
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 16px;
+        flex-direction: column;
+    }
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 2px solid purple;
+        padding: 15px;
+    }
+
+    .sidebar h3 {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .sidebar a {
+        font-size: 14px;
+        padding: 6px 0;
+    }
+
+    .conteudo {
+        margin-left: 0;
+        padding: 20px 15px;
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+
+    h2 {
+        font-size: 20px;
+        margin-top: 25px;
+        scroll-margin-top: 15px;
+    }
+
+    h4 {
+        font-size: 16px;
+        margin: 8px 0 12px;
+    }
+
+    li {
+        margin: 8px 0;
+        font-size: 14px;
+    }
+
+    hr {
+        width: 90%;
+        margin: 15px 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    .sidebar {
+        padding: 12px;
+    }
+
+    .sidebar h3 {
+        font-size: 15px;
+        margin-bottom: 12px;
+    }
+
+    .sidebar a {
+        font-size: 13px;
+        padding: 5px 0;
+    }
+
+    .conteudo {
+        padding: 15px 10px;
+    }
+
+    h1 {
+        font-size: 20px;
+        margin-bottom: 25px;
+    }
+
+    h2 {
+        font-size: 18px;
+        margin-top: 20px;
+    }
+
+    h4 {
+        font-size: 15px;
+        margin: 7px 0 10px;
+    }
+
+    li {
+        margin: 6px 0;
+        font-size: 13px;
+        word-wrap: break-word;
+    }
+
+    hr {
+        width: 95%;
+        margin: 12px 0;
+    }
+}
