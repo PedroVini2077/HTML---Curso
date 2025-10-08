@@ -1,94 +1,70 @@
-﻿# ============================================
-# GITSYNC - CURSO DE HTML (Windows)
-# ============================================
+﻿# ==============================================
+# 🔄 Sync-GitCurso.ps1
+# Sincroniza o repositório local com o GitHub
+# ==============================================
 
-[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+# Caminho do repositório
+$repoPath = "C:\Users\Pedro\Desktop\HTML - Curso"
 
-$REPO_PATH = "C:\Users\Pedro\Desktop\HTML - Curso"
-Set-Location $REPO_PATH
-
-# Pega o nome da branch atual
-$BRANCH = git -C $REPO_PATH branch --show-current
-
+# Cabeçalho estilizado
 Write-Host "═══════════════════════════════════════" -ForegroundColor Cyan
-Write-Host "    GITSYNC - Curso de HTML" -ForegroundColor Cyan
-Write-Host "═══════════════════════════════════════`n" -ForegroundColor Cyan
+Write-Host "      GITSYNC - Curso de HTML" -ForegroundColor Green
+Write-Host "═══════════════════════════════════════" -ForegroundColor Cyan
+Write-Host ""
 
-Write-Host "📂 Repositório: " -NoNewline -ForegroundColor Yellow
-Write-Host "HTML - Curso"
-Write-Host "🌿 Branch atual: " -NoNewline -ForegroundColor Yellow
-Write-Host "$BRANCH`n"
+# Muda para a pasta do repositório
+Set-Location $repoPath
 
-Write-Host "🔍 Verificando alterações..." -ForegroundColor Blue
-$status = git status --porcelain
+# Verifica a branch atual
+$branch = git rev-parse --abbrev-ref HEAD 2>$null
+Write-Host "📂 Repositório:" (Split-Path $repoPath -Leaf)
+Write-Host "🌿 Branch atual: $branch"
+Write-Host ""
 
-if ([string]::IsNullOrEmpty($status)) {
-    Write-Host "✓ Nenhuma alteração local detectada`n" -ForegroundColor Green
+# Verifica se há alterações
+Write-Host "🔍 Verificando alterações..."
+$changes = git status --porcelain
+
+if (-not $changes) {
+    Write-Host "✓ Nenhuma alteração detectada." -ForegroundColor Yellow
+} else {
+    Write-Host "✓ Alterações detectadas:" -ForegroundColor Green
+    Write-Host ""
+    Write-Host $changes
+    Write-Host ""
     
-    Write-Host "🔄 Verificando atualizações remotas..." -ForegroundColor Blue
-    git fetch origin $BRANCH | Out-Null
-    
-    $LOCAL = git rev-parse '@'
-    $REMOTE = git rev-parse '@{u}'
-    
-    if ($LOCAL -ne $REMOTE) {
-        Write-Host "⚠️  Existem atualizações no GitHub`n" -ForegroundColor Yellow
-        $choice = Read-Host "Deseja baixar as atualizações? (s/n)"
-        
-        if ($choice -eq "s" -or $choice -eq "S") {
-            Write-Host "`n⬇️  Baixando atualizações..." -ForegroundColor Blue
-            git pull origin $BRANCH
-            Write-Host "✓ Atualizado com sucesso!`n" -ForegroundColor Green
-        }
+    # Pergunta como adicionar
+    $choice = Read-Host "📝 Como deseja adicionar os arquivos? (1=Todos / 2=Seletivo)"
+    if ($choice -eq "1") {
+        git add . *> $null
+        Write-Host "✓ Arquivos adicionados" -ForegroundColor Green
     } else {
-        Write-Host "✓ Repositório está sincronizado`n" -ForegroundColor Green
+        Write-Host "Digite os arquivos que deseja adicionar (ex: index.html style.css):"
+        $files = Read-Host
+        git add $files *> $null
+        Write-Host "✓ Arquivos selecionados adicionados" -ForegroundColor Green
     }
-    exit
+
+    # Commit
+    $commitMsg = Read-Host "💬 Digite a mensagem do commit (Enter para padrão)"
+    if (-not $commitMsg) { $commitMsg = "Syncando o PC com o GitHub" }
+    git commit -m "$commitMsg" *> $null
+    Write-Host "✓ Commit realizado" -ForegroundColor Green
 }
 
-Write-Host "✓ Alterações detectadas:`n" -ForegroundColor Green
-git status --short
+# Puxa atualizações remotas
+Write-Host ""
+Write-Host "⬇️  Atualizando antes do push..." -ForegroundColor Cyan
+git pull --rebase *> $null
+Write-Host "✓ Repositório atualizado" -ForegroundColor Green
 
-Write-Host "`n📝 Como deseja adicionar os arquivos?" -ForegroundColor Yellow
-Write-Host "  1) Adicionar tudo (git add .)"
-Write-Host "  2) Adicionar seletivamente"
-$addChoice = Read-Host "Escolha (1/2)"
+# Envia pro GitHub
+Write-Host ""
+Write-Host "⬆️  Enviando para o GitHub..." -ForegroundColor Cyan
+git push *> $null
+Write-Host "✓ Push realizado com sucesso!" -ForegroundColor Green
 
-if ($addChoice -eq "2") {
-    Write-Host "📋 Adicionando seletivamente..." -ForegroundColor Blue
-    git add -i
-} else {
-    Write-Host "📋 Adicionando todos os arquivos..." -ForegroundColor Blue
-    git add .
-    Write-Host "✓ Arquivos adicionados`n" -ForegroundColor Green
-}
-
-Write-Host "💬 Digite a mensagem do commit (Enter para padrão):" -ForegroundColor Yellow
-$commitMsg = Read-Host
-
-if ([string]::IsNullOrEmpty($commitMsg)) {
-    $commitMsg = "Update $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
-    Write-Host "ℹ️  Usando mensagem padrão: `"$commitMsg`"`n" -ForegroundColor Blue
-}
-
-Write-Host "💾 Fazendo commit..." -ForegroundColor Blue
-git commit -m "$commitMsg" | Out-Null
-Write-Host "✓ Commit realizado`n" -ForegroundColor Green
-
-Write-Host "⬇️  Verificando atualizações remotas antes do push..." -ForegroundColor Blue
-git pull origin $BRANCH --rebase | Out-Null
-
-if ($LASTEXITCODE -eq 0) {
-    Write-Host "✓ Repositório atualizado`n" -ForegroundColor Green
-} else {
-    Write-Host "⚠️  Pode haver conflitos. Resolva e tente novamente.`n" -ForegroundColor Yellow
-    exit
-}
-
-Write-Host "⬆️  Enviando para o GitHub..." -ForegroundColor Blue
-git push origin $BRANCH | Out-Null
-Write-Host "✓ Push realizado com sucesso!`n" -ForegroundColor Green
-
-Write-Host "═══════════════════════════════════════" -ForegroundColor Green
-Write-Host "    ✓ Sincronização concluída!" -ForegroundColor Green
-Write-Host "═══════════════════════════════════════`n" -ForegroundColor Green
+Write-Host ""
+Write-Host "═══════════════════════════════════════" -ForegroundColor Cyan
+Write-Host "      ✓ Sincronização concluída!" -ForegroundColor Green
+Write-Host "═══════════════════════════════════════" -ForegroundColor Cyan
